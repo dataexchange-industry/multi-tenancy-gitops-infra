@@ -32,9 +32,9 @@ requiredDropCapabilities:
 runAsUser:
   type: MustRunAsNonRoot
   seLinuxContext:
-  type: MustRunAs
+    type: MustRunAs
   supplementalGroups:
-  type: MustRunAs
+    type: MustRunAs
 ranges:
   - min: 1
     max: 4294967294
