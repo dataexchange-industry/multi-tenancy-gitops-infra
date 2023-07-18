@@ -12,7 +12,13 @@ allowHostPorts: false
 allowPrivilegedContainer: false
 allowPrivilegeEscalation: true
 allowedCapabilities:
-- ALL
+- FOWNER
+- CHOWN
+- SETGID
+- SETUID
+- DAC_OVERRIDE
+- AUDIT_WRITE
+- SYS_CHROOT
 defaultAddCapabilities: []
 defaultAllowPrivilegeEscalation: false
 forbiddenSysctls:
