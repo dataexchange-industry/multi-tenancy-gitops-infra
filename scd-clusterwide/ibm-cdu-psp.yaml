@@ -2,6 +2,7 @@ apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
   name: ibm-connect-direct-psp
+  namespace: scd
   labels:
     app: "ibm-connect-direct-psp"
 spec:

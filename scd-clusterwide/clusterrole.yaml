@@ -2,6 +2,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: "ibm-connect-direct-psp"
+  namespace: scd
   labels:
     app: "ibm-connect-direct-psp"
 rules:
