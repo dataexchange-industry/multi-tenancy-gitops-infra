@@ -11,6 +11,7 @@ allowHostPID: false
 allowHostPorts: false
 allowPrivilegedContainer: false
 allowPrivilegeEscalation: true
+readOnlyRootFilesystem: false
 allowedCapabilities:
 - SETUID
 - SETGID
@@ -45,4 +46,4 @@ volumes:
 - persistentVolumeClaim
 - projected
 - secret
-# priority: 0
+priority: 0
