@@ -12,13 +12,7 @@ spec:
   hostNetwork: false
   requiredDropCapabilities:
   allowedCapabilities:
-  - CHOWN
-  - FOWNER
-  - SETGID
-  - SETUID
-  - DAC_OVERRIDE
-  - AUDIT_WRITE
-  - SYS_CHROOT
+  - '*'
   allowedHostPaths:
   runAsUser:
     rule: MustRunAsNonRoot
