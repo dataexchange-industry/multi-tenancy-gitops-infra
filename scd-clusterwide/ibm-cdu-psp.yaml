@@ -45,4 +45,4 @@ volumes:
 - persistentVolumeClaim
 - projected
 - secret
-priority: 0
+# priority: 0
