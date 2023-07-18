@@ -12,7 +12,7 @@ allowHostPorts: false
 allowPrivilegedContainer: false
 allowPrivilegeEscalation: true
 allowedCapabilities:
-- '*'
+- ALL
 defaultAddCapabilities: []
 defaultAllowPrivilegeEscalation: false
 forbiddenSysctls:
