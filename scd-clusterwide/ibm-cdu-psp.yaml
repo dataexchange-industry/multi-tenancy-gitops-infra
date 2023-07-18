@@ -2,7 +2,7 @@ apiVersion: security.openshift.io/v1
 kind: SecurityContextConstraints
 metadata:
   name: ibm-connect-direct-scc
-  labels:  
+  labels:
     app: "ibm-connect-direct-scc"
 allowHostDirVolumePlugin: false
 allowHostIPC: false
@@ -11,31 +11,33 @@ allowHostPID: false
 allowHostPorts: false
 allowPrivilegedContainer: false
 allowPrivilegeEscalation: true
-readOnlyRootFilesystem: false
 allowedCapabilities:
+- FOWNER
 - SETUID
 - SETGID
 - DAC_OVERRIDE
+- CHOWN
+- SYS_CHROOT
 - AUDIT_WRITE
 defaultAddCapabilities: []
 defaultAllowPrivilegeEscalation: false
 forbiddenSysctls:
 - "*"
-fsGroup:  
+fsGroup:
   type: MustRunAs
   ranges:
   - min: 1
     max: 4294967294
-  readOnlyRootFilesystem: false
+readOnlyRootFilesystem: false
 requiredDropCapabilities:
 - ALL
 runAsUser:
   type: MustRunAsNonRoot
-  seLinuxContext:
-    type: MustRunAs
-  supplementalGroups:
-    type: MustRunAs
-ranges:
+seLinuxContext:
+  type: MustRunAs
+supplementalGroups:
+  type: MustRunAs
+  ranges:
   - min: 1
     max: 4294967294
 volumes:
@@ -46,4 +48,4 @@ volumes:
 - persistentVolumeClaim
 - projected
 - secret
-priority: 0
+   priority: 0
