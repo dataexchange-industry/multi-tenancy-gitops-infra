@@ -1,51 +1,46 @@
-apiVersion: security.openshift.io/v1
-kind: SecurityContextConstraints
+kind: PodSecurityPolicy
+apiVersion: policy/v1beta1
 metadata:
-  name: ibm-connect-direct-scc
+  name: ibm-connect-direct-psp
   labels:
-    app: "ibm-connect-direct-scc"
-allowHostDirVolumePlugin: false
-allowHostIPC: false
-allowHostNetwork: false
-allowHostPID: false
-allowHostPorts: false
-allowPrivilegedContainer: false
-allowPrivilegeEscalation: true
-allowedCapabilities:
-- FOWNER
-- SETUID
-- SETGID
-- DAC_OVERRIDE
-- CHOWN
-- SYS_CHROOT
-- AUDIT_WRITE
-defaultAddCapabilities: []
-defaultAllowPrivilegeEscalation: false
-forbiddenSysctls:
-- "*"
-fsGroup:
-  type: MustRunAs
-  ranges:
-  - min: 1
-    max: 4294967294
-readOnlyRootFilesystem: false
-requiredDropCapabilities:
-- ALL
-runAsUser:
-  type: MustRunAsNonRoot
-seLinuxContext:
-  type: MustRunAs
-supplementalGroups:
-  type: MustRunAs
-  ranges:
-  - min: 1
-    max: 4294967294
-volumes:
-- configMap
-- downwardAPI
-- emptyDir
-- nfs
-- persistentVolumeClaim
-- projected
-- secret
-priority: 0
+    app: ibm-connect-direct-psp
+    argo.cntk/instance: scd-clusterwide
+spec:
+  runAsGroup:
+    rule: MustRunAs
+    ranges:
+      - min: 1
+        max: 4294967294
+  seLinux:
+    rule: RunAsAny
+  runAsUser:
+    rule: MustRunAsNonRoot
+  forbiddenSysctls:
+    - '*'
+  fsGroup:
+    rule: MustRunAs
+    ranges:
+      - min: 1
+        max: 4294967294
+  supplementalGroups:
+    rule: MustRunAs
+    ranges:
+      - min: 1
+        max: 4294967294
+  volumes:
+    - configMap
+    - downwardAPI
+    - emptyDir
+    - nfs
+    - persistentVolumeClaim
+    - projected
+    - secret
+  allowPrivilegeEscalation: true
+  allowedCapabilities:
+    - CHOWN
+    - FOWNER
+    - SETGID
+    - SETUID
+    - DAC_OVERRIDE
+    - AUDIT_WRITE
+    - SYS_CHROOT
